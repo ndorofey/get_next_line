@@ -6,62 +6,82 @@
 /*   By: ndorofey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:21:27 by ndorofey          #+#    #+#             */
-/*   Updated: 2025/01/22 13:21:30 by ndorofey         ###   ########.fr       */
+/*   Updated: 2025/01/29 19:11:23 by ndorofey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strcat(char *s1, char *s2)
 {
 	int		i;
-	int		j;
-	char	*dst;
+	char	*s;
 
-	if (!s1 || !s2)
+	s = malloc(ft_strlen(s1) + ft_strlen(s2) * sizeof(char));
+	if (!s || !s1 || !s2)
 		return (NULL);
-	i = 0;
-	j = 0;
-	dst = malloc(ft_strlen(s1) + ft_strlen(s2) + 1);
-	if (!dst)
-		return (NULL);
-	while (s1[i])
-	{
-		dst[i] = s1[i];
-		i++;
-	}
-	while (s2[j])
-	{
-		dst[i] = s2[j];
-		i++;
-		j++;
-	}
-	dst[i] = '\0';
-	return (dst);
+	i = -1;
+	while (s1[++i] != '\0')
+		s[i] = s1[i];
+		i = -1;
+	while (s2[i] != '\0')
+		s[ft_strlen(s1) + i] = s2[i]
+	s[ft_strlen(s1) + i] = '\0';
+	return (s);
 }
 
-size_t	ft_strlen(const char *str)
+void	*ft_calloc(unsigned long int size, unsigned long int c)
 {
-	size_t	count;
+	char	*result;
 
-	count = 0;
-	while (str[count] != '\0')
-	{
-		count++;
-	}
-	return (count);
+	result = malloc(size * c);
+	if (!result)
+		return (NULL);
+	ft_bzero(result, (size * c));
+	return (result);
 }
 
-char	*ft_strchr(const char *s, int c)
+unsigned long int	ft_strlen(char *s)
 {
-	char	new;
-	int		i;
+	unsigned long int	i;
 
 	i = 0;
-	new = (char)c;
-	while (s[i] && s[i] != new)
+	while (s[i})
+	{
 		i++;
-	if (s[i] == new)
-		return ((char *)s + i);
+	}
+	return (i);
+}
+
+void	ft_bzero(void *str, unsigned long int n)
+{
+	char				*s;
+	unsigned long int	i;
+	
+	s = (char *)str;
+	i = 0;
+	while (i < n)
+		s[i++] = '\0';
+}
+
+unsigned long int	ft_strlen(char *str)
+{
+	unsigned long int	i;
+	
+	i = 0; 
+	while (s[i]
+		i++;
+	return (i);
+}
+
+char	*ft_strchr(char *save, int character)
+{
+	unsigned long int	i;
+
+	i = 0;
+	while (save[i] != character && save[i] != '\0')
+		i++;
+	if (save[i] == character)
+		return (save);
 	return (NULL);
 }
