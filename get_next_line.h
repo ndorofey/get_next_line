@@ -3,12 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndorofey <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nikitadorofeychik <nikitadorofeychik@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:21:47 by ndorofey          #+#    #+#             */
-/*   Updated: 2025/01/22 16:00:16 by ndorofey         ###   ########.fr       */
+/*   Updated: 2025/02/02 15:02:18 by nikitadorof      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
@@ -23,9 +24,10 @@
 # include <limits.h>
 
 char	*get_next_line(int fd);
-char *ft_strcat(char *s1, char *s2)
-char *ft_strchr(char *save, int character)
-void *ft_calloc(unsigned long int size, unsigned long int c)
-void ft_bzero(void *str, unsigned long int n)
-unsigned long int ft_strlen(char *s)
+char	*ft_get_save(char *text, int *info);
+char	*ft_get_line(char *text);
+char	*ft_get_text(int fd, char *text);
+char	*ft_join_to_me(char *line, char *step, int len);
+int		ft_strlen(char *str,char type);
+int		ft_end_file(char *str);
 #endif

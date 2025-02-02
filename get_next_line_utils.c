@@ -3,85 +3,63 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ndorofey <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: nikitadorofeychik <nikitadorofeychik@st    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/22 13:21:27 by ndorofey          #+#    #+#             */
-/*   Updated: 2025/01/29 19:11:23 by ndorofey         ###   ########.fr       */
+/*   Updated: 2025/02/02 15:01:25 by nikitadorof      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-char	*ft_strcat(char *s1, char *s2)
+int		ft_strlen(char *str,char type)
 {
 	int		i;
-	char	*s;
 
-	s = malloc(ft_strlen(s1) + ft_strlen(s2) * sizeof(char));
-	if (!s || !s1 || !s2)
-		return (NULL);
-	i = -1;
-	while (s1[++i] != '\0')
-		s[i] = s1[i];
-		i = -1;
-	while (s2[i] != '\0')
-		s[ft_strlen(s1) + i] = s2[i]
-	s[ft_strlen(s1) + i] = '\0';
-	return (s);
-}
-
-void	*ft_calloc(unsigned long int size, unsigned long int c)
-{
-	char	*result;
-
-	result = malloc(size * c);
-	if (!result)
-		return (NULL);
-	ft_bzero(result, (size * c));
-	return (result);
-}
-
-unsigned long int	ft_strlen(char *s)
-{
-	unsigned long int	i;
-
+	if (!str)
+			return (0);
 	i = 0;
-	while (s[i})
+	while (str[i] && str[i] != type)
+			i++;
+	return (i);
+}
+
+char	*ft_join_to_me(char *line, char *step, int len)
+{
+	char	*alpha;
+	int				i;
+	int				j;
+	int				size;
+
+	size =ft_strlen(line, '\0');
+	alpha = malloc(sizeof(char) * (size + len + 1));
+	if (!alpha)
+			return (free(line), NULL);
+	i = 0;
+	while (i < size)
 	{
+		alpha[i] = line[i];
 		i++;
 	}
-	return (i);
+	j = 0;
+	while (i < size + len)
+			alpha[i++] = step[j++];
+	alpha[i] = '\0';
+	free(line);
+	return (alpha);
 }
-
-void	ft_bzero(void *str, unsigned long int n)
+int		ft_end_file(char *str)
 {
-	char				*s;
-	unsigned long int	i;
-	
-	s = (char *)str;
-	i = 0;
-	while (i < n)
-		s[i++] = '\0';
-}
-
-unsigned long int	ft_strlen(char *str)
-{
-	unsigned long int	i;
-	
-	i = 0; 
-	while (s[i]
-		i++;
-	return (i);
-}
-
-char	*ft_strchr(char *save, int character)
-{
-	unsigned long int	i;
+	int		i;
 
 	i = 0;
-	while (save[i] != character && save[i] != '\0')
+	if (!str)
+		return (0);
+	while (str[i])
+	{
+		if (str[i] == '\n')
+				return (1);
 		i++;
-	if (save[i] == character)
-		return (save);
-	return (NULL);
+	}
+	return (0);
 }
